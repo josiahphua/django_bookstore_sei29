@@ -13,11 +13,10 @@
           <div class="card-body">
             <div class="card-subtitle">{{book.title}}</div>
             <div class="text-muted">{{book.created_at | timesince}}</div>
+            <a href="{% url 'books:book_show_page' book.id %}">Show</a>
           </div>
-          
         </div>
       </div>
-
       {% endfor %}
     </div>
   </div>
