@@ -1,5 +1,31 @@
-{% extends 'books/base.html' %}
+{% extends 'books/base.html' %} 
 
 {% block content %}
-<h1>Books Home </h1>
+<h1>Books Home</h1>
+<div class="row">
+  <div class="col-md-7">
+    <h3>Books List</h3>
+    <div class="row">
+      {% for book in booksList %}
+      <div class="col-12 col-md-3">
+        <div class="card">
+          <img class="card-img-top" src="{{book.cover_photo.url}}" />
+          <div class="card-body">
+            <div class="card-subtitle">{{book.title}}</div>
+            <div class="text-muted">{{book.created_at | timesince}}</div>
+          </div>
+          
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+  <div class="col-md-5">
+    <form method="post">
+      {{form}}
+      <button class="btn btn-primary" type="submit">Add Book</button>
+    </form>
+  </div>
+</div>
 {% endblock content %}
