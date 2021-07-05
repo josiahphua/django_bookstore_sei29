@@ -1,22 +1,38 @@
 {% extends 'books/base.html' %} 
 
 {% block content %}
+<div class="container-fluid">
 <h1>Books Home</h1>
 <div class="row">
   <div class="col-md-7">
     <h3>Books List</h3>
     <div class="row">
       {% for book in booksList %}
-      <div class="col-12 col-md-3">
-        <div class="card">
-          <img class="card-img-top" src="{{book.cover_photo.url}}" />
-          <div class="card-body">
-            <div class="card-subtitle">{{book.title}}</div>
-            <div class="text-muted">{{book.created_at | timesince}}</div>
-            <a href="{% url 'books:book_show_page' book.id %}">Show</a>
-          </div>
-        </div>
+
+      <div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-3">
+      <img
+        src="{{book.cover_photo.url}}"
+        alt="..."
+        class="img-fluid"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{book.title}}</h5>
+        <p class="card-text">
+          This is a wider card with supporting text below as a natural lead-in to
+          additional content. This content is a little bit longer.
+        </p>
+        <p class="card-text">
+          <small class="text-muted">Created {{book.created_at | timesince}}</small>
+        </p>
+         <a href="{% url 'books:book_show_page' book.id %}">Show</a>
       </div>
+    </div>
+  </div>
+</div>
       {% endfor %}
     </div>
   </div>
@@ -27,5 +43,6 @@
       <button class="btn btn-primary" type="submit">Add Book</button>
     </form>
   </div>
+</div>
 </div>
 {% endblock content %}
